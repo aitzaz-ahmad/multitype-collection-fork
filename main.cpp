@@ -41,7 +41,7 @@ int main()
     std::cout << "exists: " << std::boolalpha << app_config.exists(section, key) << std::endl;
 
     auto str_config = app_config.get_value<std::string>(section, key);
-    auto version = str_config.has_value() ? str_config.value() : std::string{ "std::nullopt_t" };
+    auto version    = str_config.value_or(std::string{ "std::nullopt_t" });
     std::cout << "get_value<string>: " << version << std::endl;
 
     key = std::string{ "internal" };
@@ -49,19 +49,19 @@ int main()
     std::cout << "exists: " << std::boolalpha << app_config.exists(section, key) << std::endl;
 
     auto bool_config = app_config.get_value<bool>(section, key);
-    auto isInternal = bool_config.has_value() ? bool_to_str(bool_config.value()) : std::string{ "std::nullopt_t" };
+    auto isInternal  = bool_config.has_value() ? bool_to_str(bool_config.value()) : std::string{ "std::nullopt_t" };
     std::cout << "get_value<bool>: " << isInternal << std::endl;
 
     str_config = app_config.get_value<std::string>(section, key);
-    isInternal = str_config.has_value() ? str_config.value() : std::string{ "std::nullopt_t" };
+    isInternal = str_config.value_or(std::string{ "std::nullopt_t" });
     std::cout << "get_value<string>: " << isInternal << std::endl;
 
     key = std::string{ "app_name" };
     std::cout << "section: " << section << ", key: " << key << std::endl;
     std::cout << "exists: " << std::boolalpha << app_config.exists(section, key) << std::endl;
 
-    str_config = app_config.get_value<std::string>(section, key);
-    auto app_name = str_config.has_value() ? str_config.value() : std::string{ "std::nullopt_t" };
+    str_config      = app_config.get_value<std::string>(section, key);
+    auto app_name   = str_config.value_or(std::string{ "std::nullopt_t" });
     std::cout << "get_value<string>: " << app_name << std::endl;
 
     section = std::string{ "database" };
@@ -70,7 +70,7 @@ int main()
     std::cout << "exists: " << std::boolalpha << app_config.exists(section, key) << std::endl;
 
     str_config = app_config.get_value<std::string>(section, key);
-    auto db_ip = str_config.has_value() ? str_config.value() : std::string{ "std::nullopt_t" };
+    auto db_ip = str_config.value_or(std::string{ "std::nullopt_t" });
     std::cout << "get_value<string>: " << db_ip << std::endl;
 
     key = std::string{ "port" };
