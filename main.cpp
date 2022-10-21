@@ -24,7 +24,7 @@ int main()
     std::cout << "  Multi-type Key-Value Store Stub  " << std::endl;
     std::cout << "-----------------------------------" << std::endl;
     
-    auto app_config = configurations{};
+    auto app_config         = configurations{};
     const auto& app_version = static_cast<std::string>(AnsiString{ "1.0.0" });
     app_config.insert(property{ "general",  "version",   app_version });
     app_config.insert(property{ "general",  "internal",  true });
@@ -36,7 +36,7 @@ int main()
     app_config.insert(property{ "database", "instances", 10 });
 
     auto section = std::string{ "general" };
-    auto key = std::string{ "version" };
+    auto key     = std::string{ "version" };
     std::cout << "section: " << section << ", key: " << key << std::endl;
     std::cout << "exists: " << std::boolalpha << app_config.exists(section, key) << std::endl;
 
