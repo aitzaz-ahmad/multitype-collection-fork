@@ -25,14 +25,14 @@ int main()
     std::cout << "-----------------------------------" << std::endl;
     
     auto app_config = configurations{};
-    const auto& v = static_cast<std::string>(AnsiString{ "1.0.0" });
-    app_config.insert(property{ "general", "version", v});
-    app_config.insert(property{ "general", "internal", true });
-    app_config.insert(property{ "database", "ip", std::string { "192.168.15.120" } });
-    app_config.insert(property{ "database", "port", 3306 });
-    app_config.insert(property{ "database", "name", std::string { "atmdemo" } });
-    app_config.insert(property{ "database", "user", std::string { "root" } });
-    app_config.insert(property{ "database", "password", std::string { "Transact123!!" } });
+    const auto& app_version = static_cast<std::string>(AnsiString{ "1.0.0" });
+    app_config.insert(property{ "general",  "version",   app_version });
+    app_config.insert(property{ "general",  "internal",  true });
+    app_config.insert(property{ "database", "ip",        std::string { "192.168.15.120" } });
+    app_config.insert(property{ "database", "port",      3306 });
+    app_config.insert(property{ "database", "name",      std::string { "atmdemo" } });
+    app_config.insert(property{ "database", "user",      std::string { "root" } });
+    app_config.insert(property{ "database", "password",  std::string { "Transact123!!" } });
     app_config.insert(property{ "database", "instances", 10 });
 
     auto section = std::string{ "general" };
