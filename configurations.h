@@ -57,7 +57,17 @@ public:
     
     template<class U>
     std::optional<U> get_value(const std::string& section,
-                               const std::string& key) const;
+                               const std::string& key) const
+    {
+        if (!exists(section, key)) {
+
+            return std::optional<U>{};
+        }
+
+        const auto& config = m_config_properties.at(section + "_" + key);
+        return std::optional{ config.get_as<U>() };
+    }
+
 
     /**
     * <-------  TODO  ------->
