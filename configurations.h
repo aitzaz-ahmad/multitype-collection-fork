@@ -59,15 +59,8 @@ public:
     std::optional<U> get_value(const std::string& section,
                                const std::string& key) const;
 
-    /**
-    * <-------  TODO  ------->
-    * 
-    * @author:  Aitzaz Ahmad
-    * @date:    25.07.2022
-    * 
-    * @remark:  Consider adding an overload for the get_value function template
-    *           which accepts a 'const property&' as an input.
-    */
+    template<class U>
+    std::optional<U> get_value(const property& config_property) const;
 
 private:
     server_configs m_config_properties;
