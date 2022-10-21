@@ -30,7 +30,8 @@ public:
     }
 
     template<class T>
-    std::optional<T> get_as() const {
+    std::optional<T> get_as() const 
+    {
 
         if (!m_value.has_value())
             return std::optional<T>{};
