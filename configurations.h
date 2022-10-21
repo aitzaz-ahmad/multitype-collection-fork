@@ -84,15 +84,18 @@ public:
         return result.value_or(default_value);
     }
 
-    /**
-    * <-------  TODO  ------->
-    * 
-    * @author:  Aitzaz Ahmad
-    * @date:    25.07.2022
-    * 
-    * @remark:  Consider adding an overload for the get_value function template
-    *           which accepts a 'const property&' as an input.
-    */
+    template<class U>
+    std::optional<U> get_value(const property& config_property) const
+    {
+        const auto search = m_config_properties.find(config_property.hash_key());
+        if (search == m_config_properties.cend()) {
+
+            return std::optional<U>{};
+        }
+
+        const auto& config = m_config_properties.at(config_property.hash_key());
+        return std::optional{ config.get_as<U>() };
+    }
 
 private:
     server_configs m_config_properties;

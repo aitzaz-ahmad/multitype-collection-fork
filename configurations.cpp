@@ -37,3 +37,4 @@ bool configurations::exists(const std::string& section, const std::string& key) 
     const auto search = m_config_properties.find(section + "_" + key);
     return search != m_config_properties.cend();
 }
+
