@@ -80,15 +80,8 @@ public:
                    const std::string& key,
                    const U default_value) const
     {
-        if (!exists(section, key)) {
-
-            return default_value;
-        }
-
-        const auto& config = m_config_properties.at(section + "_" + key);
-        const auto result = config.get_as<U>();
-
-        return result.has_value() ? result.value() : default_value;
+        const auto result = get_value<U>(section, key);
+        return result.value_or(default_value);
     }
 
     /**
