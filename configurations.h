@@ -52,7 +52,13 @@ using server_configs = std::unordered_map<std::string, property>;
 
 class configurations {
 public:
-    void insert(const property& config_property);
+
+    void insert(const property& config);
+    void insert(const property&& config);
+
+    void remove(const property& config);
+
+    bool exists(const property& config);
     bool exists(const std::string& section, const std::string& key) const;
     
     template<class U>
