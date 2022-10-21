@@ -68,6 +68,21 @@ public:
         return std::optional{ config.get_as<U>() };
     }
 
+    template<typename U>
+    U get_value_or(const std::string& section,
+                   const std::string& key,
+                   const U default_value) const
+    {
+        if (!exists(section, key)) {
+
+            return default_value;
+        }
+
+        const auto& config = m_config_properties.at(section + "_" + key);
+        const auto result = config.get_as<U>();
+
+        return result.has_value() ? result.value() : default_value;
+    }
 
     /**
     * <-------  TODO  ------->
