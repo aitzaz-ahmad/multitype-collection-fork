@@ -31,7 +31,9 @@
 *.out
 *.app
 
-# Temporary VS Directories
-*.vs/
-*Debug/
-*Release/
+# Temporary VS Directories and Files
+*.vcxproj.user
+*.vs/*
+x64/*
+Debug/*
+Release/*
